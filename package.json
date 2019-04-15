@@ -1,0 +1,17 @@
+{
+  "name": "hey-hows-it-going-bot",
+  "version": "1.0.0",
+  "description": "Hey how's it going",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tyler Cummings <Tyler.V.Cummings@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^11.4.2",
+    "discord.js-commando": "^0.10.0",
+    "ffmpeg-binaries": "^4.0.0",
+    "opusscript": "^0.0.6"
+  }
+}
