@@ -3,17 +3,19 @@ const fs = require('fs')
 
 class BaseSoundCommand extends Command {
   play(connection, message, args) {
-    var fileName = this.fileNames[Math.floor(Math.random() * this.fileNames.length)]
+    var index = !isNaN(args) && args >= 1
+      ? Math.floor(Math.floor((args - 1) % this.fileNames.length))
+      : Math.floor(Math.random() * this.fileNames.length)
+
+    var fileName = this.fileNames[index]
     var filePath = `${__dirname}/sounds/${fileName}`
 
-    var readStream = fs.createReadStream(filePath)
-
     var server = servers[message.guild.id]
-    server.dispatcher = connection.playStream(readStream, {
-      volume: !isNaN(args) ? Math.min(args, 100) : 1
-    })
+    server.dispatcher = connection.playFile(filePath)
 
-    server.dispatcher.on('end', () => { connection.disconnect() })
+    server.dispatcher.on('end', () => {
+      setTimeout(() => connection.disconnect(), 1000)
+    })
   }
 
   async run(message, args) {

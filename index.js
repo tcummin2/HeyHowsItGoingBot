@@ -13,7 +13,8 @@ client.registry
   .registerDefaultGroups()
   .registerGroups([
     ['text', 'Text'],
-    ['sounds', 'Sounds']
+    ['sounds', 'Sounds'],
+    ['hey', 'Hey']
   ])
   .registerDefaultCommands({
     help: false,
@@ -24,3 +25,4 @@ client.registry
   .registerCommandsIn(`${__dirname}/commands`)
 
 client.login(config.token)
+  .then(console.log('Ready'))
