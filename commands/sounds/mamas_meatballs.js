@@ -8,7 +8,7 @@ class MamasMeatballs extends BaseSoundCommand {
       memberName: 'meatballs',
       description: 'Nothin\' beats mama\'s meatballs'
     })
-    this.fileNames = ['mamas-meatballs.mp3', 'nothin-better.mp3']
+    this.fileNames = ['mamas-meatballs.mp3', 'mamas-meatballs-2.mp3', 'nothin-better.mp3']
   }
 }
 

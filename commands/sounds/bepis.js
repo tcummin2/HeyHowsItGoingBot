@@ -8,7 +8,7 @@ class Bepis extends BaseSoundCommand {
       memberName: 'bepis',
       description: 'Gimme the bepis'
     })
-    this.fileNames = ['bepis.mp3', 'bepis-loud.mp3']
+    this.fileNames = ['bepis.mp3']
   }
 }
 
