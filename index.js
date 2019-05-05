@@ -14,7 +14,8 @@ client.registry
   .registerGroups([
     ['text', 'Text'],
     ['sounds', 'Sounds'],
-    ['hey', 'Hey']
+    ['hey', 'Hey'],
+    ['hidden', 'Hidden']
   ])
   .registerDefaultCommands({
     help: false,
