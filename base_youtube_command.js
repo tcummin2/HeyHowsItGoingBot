@@ -6,9 +6,11 @@ class BaseYoutubeCommand extends Command {
 
     var server = servers[message.guild.id]
     var stream = Ytdl(this.url, { filter: 'audioonly' })
+    server.isPlaying = true
     server.dispatcher = connection.playStream(stream, { volume: this.volume || 1 })
 
     server.dispatcher.on('end', () => {
+      server.isPlaying = false
       setTimeout(() => connection.disconnect(), 1000)
     })
   }

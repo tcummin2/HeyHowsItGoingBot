@@ -12,6 +12,7 @@ class Stop extends Command {
 
   async run(message, args) {
     var server = servers[message.guild.id]
+    server.isPlaying = false
     server.dispatcher.end()
   }
 }

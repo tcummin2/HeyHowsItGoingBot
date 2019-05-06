@@ -10,9 +10,11 @@ class BaseSoundCommand extends Command {
     var filePath = `${__dirname}/sounds/${fileName}`
 
     var server = servers[message.guild.id]
+    server.isPlaying = true
     server.dispatcher = connection.playFile(filePath)
 
     server.dispatcher.on('end', () => {
+      server.isPlaying = false
       setTimeout(() => connection.disconnect(), 1000)
     })
   }

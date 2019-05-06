@@ -35,7 +35,8 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
 
   if (oldUserChannel === undefined && newUserChannel !== undefined) {
     var server = global.servers[newUserChannel.guild.id]
-    if (server && server.autoHey && server.autoHey.voiceChannelId === newUserChannel.id) {
+    if (newMember.user.id !== config.botId && server && !server.isPlaying
+        && server.autoHey && server.autoHey.voiceChannelId === newUserChannel.id) {
       newUserChannel.join()
         .then(connection => {
           // Very hacky, need a way to call a command directly
@@ -47,7 +48,5 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
           })
         })
     }
-  } else if (newUserChannel === undefined){
-    console.log('leave')
   }
 })
