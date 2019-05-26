@@ -19,7 +19,6 @@ client.registry
     ['hidden', 'Hidden']
   ])
   .registerDefaultCommands({
-    help: false,
     ping: false,
     unknownCommand: false,
     commandState: false

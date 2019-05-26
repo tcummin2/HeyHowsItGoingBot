@@ -4,7 +4,7 @@ class HeyGosh extends BaseSoundCommand {
   constructor(client) {
     super(client, {
       name: 'heygosh',
-      group: 'sounds',
+      group: 'hey',
       memberName: 'heygosh',
       description: 'HHHHHHEEEEEEEEEEEEEEEEEEEYYYYYYYYYYYYYYYYYYYYY'
     })

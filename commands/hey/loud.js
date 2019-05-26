@@ -4,7 +4,7 @@ class LoudHey extends BaseSoundCommand {
   constructor(client) {
     super(client, {
       name: 'loudhey',
-      group: 'sounds',
+      group: 'hey',
       memberName: 'loudhey',
       description: 'JP'
     })
