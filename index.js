@@ -16,7 +16,8 @@ client.registry
     ['sounds', 'Sounds'],
     ['youtube', 'YouTube'],
     ['hey', 'Hey'],
-    ['hidden', 'Hidden']
+    ['hidden', 'Hidden'],
+    ['other', 'Other']
   ])
   .registerDefaultCommands({
     ping: false,
