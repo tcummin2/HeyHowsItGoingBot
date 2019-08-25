@@ -4,7 +4,7 @@ class Joey extends BaseSoundCommand {
   constructor(client) {
     super(client, {
       name: 'joey',
-      group: 'sounds',
+      group: 'image',
       memberName: 'joey',
       description: 'Joey M. Eatballs at your service'
     })

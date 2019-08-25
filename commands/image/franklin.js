@@ -4,7 +4,7 @@ class Franklin extends BaseSoundCommand {
   constructor(client) {
     super(client, {
       name: 'franklin',
-      group: 'sounds',
+      group: 'image',
       memberName: 'franklin',
       description: 'Franklin S. Paghetti at your service'
     })

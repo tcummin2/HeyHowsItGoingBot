@@ -9,7 +9,7 @@ class BaseImageCommand extends Command {
     var fileName = this.fileNames[index]
     var filePath = `${__dirname}/img/${fileName}`
 
-    message.channel.send(this.description  || '', {
+    message.channel.send(this.hideText ? '' : this.description, {
       files: [{
         attachment: filePath,
         name: fileName

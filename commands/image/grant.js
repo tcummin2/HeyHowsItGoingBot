@@ -4,7 +4,7 @@ class Grant extends BaseSoundCommand {
   constructor(client) {
     super(client, {
       name: 'grant',
-      group: 'sounds',
+      group: 'image',
       memberName: 'grant',
       description: 'Grant R. Avioli at your service'
     })
