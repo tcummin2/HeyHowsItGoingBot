@@ -8,7 +8,7 @@ class Oi extends BaseSoundCommand {
       memberName: 'oi',
       description: 'oi'
     })
-    this.fileNames = ['oi.mp3']
+    this.fileNames = ['oi.mp3', 'oi-2.mp3']
   }
 }
 
