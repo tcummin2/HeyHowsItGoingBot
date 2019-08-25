@@ -16,6 +16,7 @@ client.registry
     ['sounds', 'Sounds'],
     ['youtube', 'YouTube'],
     ['hey', 'Hey'],
+    ['tts', 'Tts'],
     ['hidden', 'Hidden'],
     ['other', 'Other']
   ])
