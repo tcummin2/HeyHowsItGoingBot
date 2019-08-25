@@ -50,3 +50,5 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
     }
   }
 })
+
+client.on('error', console.error)
