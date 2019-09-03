@@ -3,6 +3,11 @@ const config = require('./config.json')
 
 global.servers = {}
 
+const AUTOHEY_COMMAND = {
+  name: 'hey',
+  args: '1'
+}
+
 const client = new Client({
   owner: config.ownerId,
   unknownCommandResponse: false
@@ -39,16 +44,10 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
     var server = global.servers[newUserChannel.guild.id]
     if (newMember.user.id !== config.botId && server && !server.isPlaying
         && server.autoHey && server.autoHey.voiceChannelId === newUserChannel.id) {
-      newUserChannel.join()
-        .then(connection => {
-          // Very hacky, need a way to call a command directly
-          var filePath = `${__dirname}/sounds/hey/hey.mp3`
-          server.dispatcher = connection.playFile(filePath)
-
-          server.dispatcher.on('end', () => {
-            setTimeout(() => connection.disconnect(), 3000)
-          })
-        })
+      client.registry.findCommands(AUTOHEY_COMMAND.name)[0].run({
+        member: newMember,
+        guild: newUserChannel.guild
+      }, AUTOHEY_COMMAND.args)
     }
   }
 })
