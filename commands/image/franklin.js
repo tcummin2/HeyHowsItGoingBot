@@ -1,6 +1,6 @@
-const BaseSoundCommand = require('../../base_image_command')
+const BaseImageCommand = require('../../base_image_command')
 
-class Franklin extends BaseSoundCommand {
+class Franklin extends BaseImageCommand {
   constructor(client) {
     super(client, {
       name: 'franklin',
