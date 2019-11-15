@@ -3,10 +3,14 @@ const config = require('./config.json')
 
 global.servers = {}
 
-const AUTOHEY_COMMAND = {
+const AUTO_COMMANDS = [{
+  identifier: 'autoHey',
   name: 'hey',
   args: '1'
-}
+}, {
+  identifier: 'autoJerry',
+  name: 'jerry',
+}]
 
 const client = new Client({
   owner: config.ownerId,
@@ -42,12 +46,14 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
 
   if (oldUserChannel === undefined && newUserChannel !== undefined) {
     var server = global.servers[newUserChannel.guild.id]
-    if (newMember.user.id !== config.botId && server && !server.isPlaying
-        && server.autoHey && server.autoHey.voiceChannelId === newUserChannel.id) {
-      client.registry.findCommands(AUTOHEY_COMMAND.name)[0].run({
-        member: newMember,
-        guild: newUserChannel.guild
-      }, AUTOHEY_COMMAND.args)
+    if (newMember.user.id !== config.botId && server && !server.isPlaying) {
+      var autoCommand = AUTO_COMMANDS.find(({identifier}) => server[identifier] && server[identifier].voiceChannelId === newUserChannel.id)
+      if (autoCommand) {
+        client.registry.findCommands(autoCommand.name)[0].run({
+          member: newMember,
+          guild: newUserChannel.guild
+        }, autoCommand.args)
+      }
     }
   }
 })
