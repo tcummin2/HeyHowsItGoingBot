@@ -20,7 +20,7 @@ class AutoHey extends BaseTextCommand {
         Object.assign(servers[guild.id], {
           autoHey: { voiceChannelId: member.voiceChannel.id }
         })
-        message.channel.sendMessage(`Watching ${member.voiceChannel.name} for joins`)
+        message.channel.send(`Watching ${member.voiceChannel.name} for joins`)
       }
     }
   }

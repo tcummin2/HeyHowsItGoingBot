@@ -20,7 +20,7 @@ class AutoJerry extends BaseTextCommand {
         Object.assign(servers[guild.id], {
           autoJerry: { voiceChannelId: member.voiceChannel.id }
         })
-        message.channel.sendMessage(`Watching ${member.voiceChannel.name} for Jerrys`)
+        message.channel.send(`Watching ${member.voiceChannel.name} for Jerrys`)
       }
     }
   }
