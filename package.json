@@ -12,7 +12,9 @@
     "discord.js": "^11.4.2",
     "discord.js-commando": "^0.10.0",
     "ffmpeg-binaries": "^4.0.0",
+    "jimp": "^0.9.3",
     "opusscript": "^0.0.6",
+    "uuid": "^3.4.0",
     "ytdl-core": "^0.29.1"
   }
 }
