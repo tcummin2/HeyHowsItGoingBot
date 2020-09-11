@@ -9,7 +9,7 @@ class Dolphin extends BaseSoundCommand {
       description: '*Dolphin noise*',
       aliases: ['🐬']
     })
-    this.fileNames = ['dolphin.mp3']
+    this.fileNames = ['dolphin.mp3', 'dolphin-2.mp3']
   }
 }
 
