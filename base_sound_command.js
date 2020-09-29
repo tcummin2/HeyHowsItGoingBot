@@ -2,7 +2,7 @@ const { Command } = require('discord.js-commando')
 
 class BaseSoundCommand extends Command {
   play(connection, message, args) {
-    var index = !isNaN(args) && args >= 1
+    var index = !this.ignoreArguments && !isNaN(args) && args >= 1
       ? Math.floor(Math.floor((args - 1) % this.fileNames.length))
       : Math.floor(Math.random() * this.fileNames.length)
 
