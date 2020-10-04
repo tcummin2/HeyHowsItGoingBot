@@ -8,7 +8,7 @@ class WakeTeephUp extends BaseSoundCommand {
       memberName: 'waketeephup',
       description: 'EY YO TEEPH'
     })
-    this.fileNames = ['teeph-loud.mp3']
+    this.fileNames = ['teeph-loud.mp3', 'teeph-loud-2.mp3']
   }
 }
 
