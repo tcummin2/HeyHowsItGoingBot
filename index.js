@@ -10,6 +10,9 @@ const AUTO_COMMANDS = [{
 }, {
   identifier: 'autoJerry',
   name: 'jerry',
+}, {
+  identifier: 'autoWide',
+  name: 'wide',
 }]
 
 const client = new Client({
