@@ -8,7 +8,7 @@ class Slurp extends BaseSoundCommand {
       memberName: 'slurp',
       description: 'Numnumnumnumnumnum'
     })
-    this.fileNames = ['slurp.mp3', 'slurp-2.mp3', 'slurp-3.mp3', 'slurp-4.mp3']
+    this.fileNames = ['slurp.mp3', 'slurp-2.mp3', 'slurp-3.mp3', 'slurp-4.mp3', 'slurp-5.mp3']
   }
 }
 
