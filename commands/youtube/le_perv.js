@@ -1,6 +1,6 @@
-const BaseSoundCommand = require('../../base_youtube_command')
+const BaseYoutubeCommand = require('../../base_youtube_command')
 
-class LePerv extends BaseSoundCommand {
+class LePerv extends BaseYoutubeCommand {
   constructor(client) {
     super(client, {
       name: 'leperv',

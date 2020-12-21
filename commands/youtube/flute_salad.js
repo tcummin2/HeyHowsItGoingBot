@@ -1,6 +1,6 @@
-const BaseSoundCommand = require('../../base_youtube_command')
+const BaseYoutubeCommand = require('../../base_youtube_command')
 
-class FluteSalad extends BaseSoundCommand {
+class FluteSalad extends BaseYoutubeCommand {
   constructor(client) {
     super(client, {
       name: 'flutesalad',

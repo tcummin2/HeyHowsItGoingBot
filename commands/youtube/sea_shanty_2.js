@@ -1,6 +1,6 @@
-const BaseSoundCommand = require('../../base_youtube_command')
+const BaseYoutubeCommand = require('../../base_youtube_command')
 
-class SeaShanty2 extends BaseSoundCommand {
+class SeaShanty2 extends BaseYoutubeCommand {
   constructor(client) {
     super(client, {
       name: 'seashanty2',

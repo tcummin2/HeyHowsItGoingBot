@@ -1,6 +1,11 @@
 const { Command } = require('discord.js-commando')
 
 class BaseSoundCommand extends Command {
+  constructor(client, args) {
+    super(client, args)
+    this.isAutomatable = true
+  }
+
   play(connection, message, args) {
     var index = !this.ignoreArguments && !isNaN(args) && args >= 1
       ? Math.floor(Math.floor((args - 1) % this.fileNames.length))
@@ -24,10 +29,8 @@ class BaseSoundCommand extends Command {
     if (member.voiceChannel && !guild.voiceConnection) {
       if (!servers[guild.id]) servers[guild.id] = {}
 
-      member.voiceChannel.join()
-        .then(connection => {
-          this.play(connection, message, args)
-        })
+      const connection = await member.voiceChannel.join()
+      this.play(connection, message, args)
     }
   }
 }

@@ -11,6 +11,7 @@ class Quarantine extends BaseSoundCommand {
       description: '☣️☣️☣️☣️☣️ QUARANTINE ☣️☣️☣️☣️☣️'
     })
     this.fileNames = ['tactical-nuke.mp3']
+    this.isAutomatable = false
   }
 
   reportQuarantine(guild, oldName, args) {
