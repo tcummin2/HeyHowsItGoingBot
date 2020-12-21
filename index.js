@@ -9,10 +9,13 @@ const AUTO_COMMANDS = [{
   args: '1'
 }, {
   identifier: 'autoJerry',
-  name: 'jerry',
+  name: 'jerry'
 }, {
   identifier: 'autoWide',
-  name: 'wide',
+  name: 'wide'
+}, {
+  identifier: 'autoPunk',
+  name: 'cyberpunk'
 }]
 
 const client = new Client({
