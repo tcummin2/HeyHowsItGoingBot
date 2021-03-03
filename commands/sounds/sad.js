@@ -10,7 +10,7 @@ class Sad extends BaseSoundCommand {
       aliases: ['sadd', 'sus', 'amongus', 'thisissosad']
     })
     this.ignoreArguments = true
-    this.fileNames = ['sad-violin.mp3', 'mmm.mp3','enya.mp3', 'silence.mp3', 'untitled.mp3', 'gandalf.mp3', 'hurt.mp3']
+    this.fileNames = ['sad-violin.mp3', 'mmm.mp3','enya.mp3', 'silence.mp3', 'untitled.mp3', 'gandalf.mp3', 'hurt.mp3', 'fine.mp3', 'suffer.mp3']
   }
 }
 
