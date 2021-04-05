@@ -7,10 +7,21 @@ class Sad extends BaseSoundCommand {
       group: 'sounds',
       memberName: 'sad',
       description: 'OMG this is so sad, Alexa play Take On Me by Reel Big Fish',
-      aliases: ['sadd', 'sus', 'amongus', 'thisissosad']
+      aliases: ['sadd', 'thisissosad']
     })
     this.ignoreArguments = true
-    this.fileNames = ['sad-violin.mp3', 'mmm.mp3','enya.mp3', 'silence.mp3', 'untitled.mp3', 'gandalf.mp3', 'hurt.mp3', 'fine.mp3', 'suffer.mp3']
+    this.fileNames = [
+      'sad-violin.mp3',
+      'mmm.mp3',
+      'enya.mp3',
+      'silence.mp3',
+      'untitled.mp3',
+      'gandalf.mp3',
+      'hurt.mp3',
+      'fine.mp3',
+      'suffer.mp3',
+      'titanic.mp3'
+    ]
   }
 }
 
