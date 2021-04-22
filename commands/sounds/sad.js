@@ -20,7 +20,9 @@ class Sad extends BaseSoundCommand {
       'hurt.mp3',
       'fine.mp3',
       'suffer.mp3',
-      'titanic.mp3'
+      'titanic.mp3',
+      'titanic-bass.mp3',
+      'recorder-3.mp3'
     ]
   }
 }
