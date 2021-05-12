@@ -14,7 +14,6 @@ client.registry
   .registerGroups([
     ['text', 'Text'],
     ['sounds', 'Sounds'],
-    ['youtube', 'YouTube'],
     ['image', 'Image'],
     ['hey', 'Hey'],
     ['tts', 'Tts'],
