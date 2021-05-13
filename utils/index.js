@@ -1,15 +1,15 @@
 module.exports = {
-  onVoiceUpdate(oldMember, newMember) {
-    var newUserChannel = newMember.voiceChannel
-    var oldUserChannel = oldMember.voiceChannel
+  onVoiceUpdate(oldVoiceState, newVoiceState) {
+    const oldUserChannel = oldVoiceState.channel
+    const newUserChannel = newVoiceState.channel
 
-    if (oldUserChannel !== undefined || newUserChannel === undefined) return
+    if (!!oldUserChannel || !newUserChannel) return
 
-    var server = global.servers[newUserChannel.guild.id]
-    if (!newMember.user.bot && server && !server.isPlaying
+    const server = global.servers[newUserChannel.guild.id]
+    if (!newVoiceState.member.user.bot && server && !server.isPlaying
         && server.autoCommand && server.autoCommand.voiceChannelId === newUserChannel.id) {
       server.autoCommand.command.run({
-        member: newMember,
+        member: newVoiceState.member,
         guild: newUserChannel.guild
       }, server.autoCommand.commandArgs)
     }

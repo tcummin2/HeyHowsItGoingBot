@@ -15,9 +15,9 @@ class Quarantine extends BaseSoundCommand {
   }
 
   reportQuarantine(guild, oldName, args) {
-    var scoreboard = guild.channels.find(({ name }) => name.toLowerCase().includes('scoreboard'))
+    const scoreboard = guild.channels.cache.find(({ name }) => name.toLowerCase().includes('scoreboard'))
     if (scoreboard) {
-      var message = `${oldName} was ☣️ QUARANTINED ☣️`
+      let message = `${oldName} was ☣️ QUARANTINED ☣️`
       if (args) {
         message = `${message} due to ${args}`
       }
@@ -25,30 +25,28 @@ class Quarantine extends BaseSoundCommand {
     }
   }
 
-  moveChannelAndReport(voiceChannel, oldName, args) {
-    var { guild } = voiceChannel
-    var quarantineCategory = guild.channels.filter(({ type }) => type === 'category')
+  async moveChannelAndReport(voiceChannel, oldName, args) {
+    const { guild } = voiceChannel
+    const quarantineCategory = guild.channels.cache.filter(({ type }) => type === 'category')
       .find(({ name }) => name.toLowerCase().includes('quarantine'))
 
     if (quarantineCategory) {
-      voiceChannel.setParent(quarantineCategory)
+      await voiceChannel.setParent(quarantineCategory)
     }
 
     this.reportQuarantine(guild, oldName, args)
   }
 
-  async run({ member: { voiceChannel }, channel }, args) {
-    if (!voiceChannel) return
+  async run({ member: { voice }, channel }, args) {
+    if (!voice.channel) return
 
-    if (!voiceChannel.name.includes(QUARANTINED_NAME)) {
-      super.run(...arguments)
-        .then(() => {
-          const voiceChannelName = voiceChannel.name
-          voiceChannel.setName(`☣️ ${QUARANTINED_NAME} ${voiceChannelName}`)
-            .then(channel => this.moveChannelAndReport(channel, voiceChannelName, args))
-        })
+    if (!voice.channel.name.includes(QUARANTINED_NAME)) {
+      await super.run(...arguments)
+      const voiceChannelName = voice.channel.name
+      await voice.channel.setName(`☣️ ${QUARANTINED_NAME} ${voiceChannelName}`)
+      await this.moveChannelAndReport(voice.channel, voiceChannelName, args)
     } else {
-      channel.send(`${voiceChannel.name} is already ☣️ QUARANTINED ☣️!`)
+      channel.send(`${voice.channel.name} is already ☣️ QUARANTINED ☣️!`)
     }
   }
 }
