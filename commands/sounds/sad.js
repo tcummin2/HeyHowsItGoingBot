@@ -22,7 +22,15 @@ class Sad extends BaseSoundCommand {
       'suffer.mp3',
       'titanic.mp3',
       'titanic-bass.mp3',
-      'recorder-3.mp3'
+      'recorder-3.mp3',
+      'aerith.mp3',
+      'beethoven.mp3',
+      'mozart.mp3',
+      'never-forget.mp3',
+      'pagliacci.mp3',
+      'on-the-nature-of-daylight.mp3',
+      'up.mp3',
+      'adagio-for-strings.mp3'
     ]
   }
 }
