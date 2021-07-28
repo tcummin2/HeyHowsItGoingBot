@@ -12,7 +12,7 @@ class Request extends Command {
   }
 
   async run({ member, channel, client }, args) {
-    client.fetchUser(config.ownerId).then(user => {
+    client.users.fetch(config.ownerId).then(user => {
       user.send(`Request from ${member.user.username}: ${args}`)
     })
 
