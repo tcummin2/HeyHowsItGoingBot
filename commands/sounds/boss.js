@@ -16,7 +16,12 @@ class Boss extends BaseSoundCommand {
       'mars.mp3',
       'nfl.mp3',
       'o-fortuna.mp3',
-      'vordt.mp3'
+      'vordt.mp3',
+      'price-is-right.mp3',
+      'superman.mp3',
+      'megalovania.mp3',
+      'daytona.mp3',
+      'duel-of-the-fates.mp3'
     ]
   }
 }
