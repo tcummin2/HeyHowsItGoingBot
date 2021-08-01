@@ -21,7 +21,10 @@ class Boss extends BaseSoundCommand {
       'superman.mp3',
       'megalovania.mp3',
       'daytona.mp3',
-      'duel-of-the-fates.mp3'
+      'duel-of-the-fates.mp3',
+      'digiorno.mp3',
+      'sm64-boss.mp3',
+      'sm64-slider.mp3'
     ]
   }
 }
