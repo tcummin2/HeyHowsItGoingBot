@@ -8,7 +8,7 @@ class Oof extends BaseSoundCommand {
       memberName: 'oof',
       description: 'Big oof'
     })
-    this.fileNames = ['oof.mp3']
+    this.fileNames = ['oof.mp3', 'oof-2.mp3']
   }
 }
 

@@ -24,7 +24,8 @@ class Boss extends BaseSoundCommand {
       'duel-of-the-fates.mp3',
       'digiorno.mp3',
       'sm64-boss.mp3',
-      'sm64-slider.mp3'
+      'sm64-slider.mp3',
+      'big-chungus.mp3'
     ]
   }
 }

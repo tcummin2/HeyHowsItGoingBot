@@ -30,7 +30,8 @@ class Sad extends BaseSoundCommand {
       'pagliacci.mp3',
       'on-the-nature-of-daylight.mp3',
       'up.mp3',
-      'adagio-for-strings.mp3'
+      'adagio-for-strings.mp3',
+      'coffin-dance.mp3'
     ]
   }
 }
