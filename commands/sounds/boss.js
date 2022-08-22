@@ -25,7 +25,8 @@ class Boss extends BaseSoundCommand {
       'digiorno.mp3',
       'sm64-boss.mp3',
       'sm64-slider.mp3',
-      'big-chungus.mp3'
+      'big-chungus.mp3',
+      'godskin-apostles.mp3'
     ]
   }
 }
