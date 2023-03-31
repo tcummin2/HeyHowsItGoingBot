@@ -1,4 +1,5 @@
 const { Client, GatewayIntentBits } = require('discord.js')
+const axios = require('axios')
 // const { Client, GatewayIntentBits } = require('discord.js-commando')
 const config = require('./config.json')
 
@@ -40,10 +41,19 @@ const client = new Client({
 client.login(config.token)
   .then(console.log('Ready'))
 
-client.on('error', console.error)
+  client.on('error', console.error)
+
+const defaultText = 'shut up'
+let navySealCopyPasta
+axios.get('https://raw.githubusercontent.com/Patater/qso-generator/master/corpora/navy-seal-copypasta.txt')
+  .then(response => {
+    navySealCopyPasta = response.data
+  })
 
 client.on('messageCreate', async ({ channel, content, author }) => {
   if (content.startsWith('!') && !author.bot) {
-    await channel.send({ content: 'shut up' })
+    const randomNumber = Math.floor(Math.random() * 10)
+    const content = randomNumber === 0 ? navySealCopyPasta : defaultText
+    await channel.send({ content })
   }
 })
