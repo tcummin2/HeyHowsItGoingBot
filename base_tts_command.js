@@ -1,9 +1,10 @@
-const { Command } = require('discord.js-commando')
+import { Command } from '@sapphire/framework'
 
-class BaseTtsCommand extends Command {
-  async run(message, args) {
-    message.channel.send(this.description, { tts: true })
+export default class BaseTtsCommand extends Command {
+  async messageRun(message) {
+    await message.channel.send({
+      content: this.description,
+      tts: true
+    })
   }
 }
-
-module.exports = BaseTtsCommand

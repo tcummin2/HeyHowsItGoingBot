@@ -1,20 +1,18 @@
-const Commando = require('discord.js-commando')
+import { Command } from '@sapphire/framework'
 
-class LeaveChannelCommand extends Commando.Command {
-  constructor(client) {
-    super(client, {
+export default class LeaveChannelCommand extends Command {
+  constructor(context, options) {
+    super(context, {
+      ...options,
       name: 'heyleave',
-      group: 'sounds',
-      memberName: 'heyleave',
+      category: 'sounds',
       description: 'Leaves the channel'
     })
   }
 
-  async run(message, args) {
+  async messageRun(message) {
     if (message.guild.voiceConnection) {
-      message.guild.voiceConnection.disconnect()
+      await message.guild.voiceConnection.disconnect()
     }
   }
 }
-
-module.exports = LeaveChannelCommand

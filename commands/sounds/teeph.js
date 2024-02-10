@@ -1,15 +1,13 @@
-const BaseSoundCommand = require('../../base_sound_command')
+import BaseSoundCommand from '../../base_sound_command.js'
 
-class Teeph extends BaseSoundCommand {
-  constructor(client) {
-    super(client, {
+export default class Teeph extends BaseSoundCommand {
+  constructor(context, options) {
+    super(context, {
+      ...options,
       name: 'teeph',
-      group: 'sounds',
-      memberName: 'teeph',
+      category: 'sounds',
       description: 'Ey yo Teeph'
     })
     this.fileNames = ['teeph.mp3', 'teeph-2.mp3']
   }
 }
-
-module.exports = Teeph

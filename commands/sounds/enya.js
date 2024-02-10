@@ -1,15 +1,13 @@
-const BaseSoundCommand = require('../../base_sound_command')
+import BaseSoundCommand from '../../base_sound_command.js'
 
-class Enya extends BaseSoundCommand {
-  constructor(client) {
-    super(client, {
+export default class Enya extends BaseSoundCommand {
+  constructor(context, options) {
+    super(context, {
+      ...options,
       name: 'enya',
-      group: 'sounds',
-      memberName: 'enya',
+      category: 'sounds',
       description: 'Who can say where the road goes?'
     })
     this.fileNames = ['enya.mp3', 'enya-2.mp3']
   }
 }
-
-module.exports = Enya

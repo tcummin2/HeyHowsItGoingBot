@@ -1,16 +1,14 @@
-const BaseSoundCommand = require('../../base_sound_command')
+import BaseSoundCommand from '../../base_sound_command.js'
 
-class Hermione extends BaseSoundCommand {
-  constructor(client) {
-    super(client, {
+export default class Hermione extends BaseSoundCommand {
+  constructor(context, options) {
+    super(context, {
+      ...options,
       name: 'hermione',
-      group: 'sounds',
-      memberName: 'hermione',
+      category: 'sounds',
       description: 'Not me, not Hermione, YOU.',
       aliases: ['notme', 'nothermione']
     })
     this.fileNames = ['hermione.mp3']
   }
 }
-
-module.exports = Hermione

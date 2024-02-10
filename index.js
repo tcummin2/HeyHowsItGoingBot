@@ -1,13 +1,13 @@
-const { Client, GatewayIntentBits } = require('discord.js')
-const axios = require('axios')
-// const { Client, GatewayIntentBits } = require('discord.js-commando')
-const config = require('./config.json')
+import path from 'path'
+import { GatewayIntentBits } from 'discord.js'
+import { SapphireClient } from '@sapphire/framework'
+import config from './config.json' with { type: 'json' }
+
+global.__dirname = path.resolve();
 
 global.servers = {}
 
-const client = new Client({
-  owner: config.ownerId,
-  unknownCommandResponse: false,
+const client = new SapphireClient({
   intents: [
     GatewayIntentBits.Guilds,
     GatewayIntentBits.GuildMembers,
@@ -16,44 +16,25 @@ const client = new Client({
     GatewayIntentBits.GuildPresences,
     GatewayIntentBits.GuildMessages,
     GatewayIntentBits.MessageContent
-  ]
+  ],
+  loadMessageCommandListeners: true,
+  caseInsensitiveCommands: true,
+  caseInsensitivePrefixes: true,
+  defaultPrefix: '!',
+  typing: true,
+  disableMentionPrefix: true
 })
 
-// client.registry
-//   .registerDefaultTypes()
-//   .registerDefaultGroups()
-//   .registerGroups([
-//     ['text', 'Text'],
-//     ['sounds', 'Sounds'],
-//     ['image', 'Image'],
-//     ['hey', 'Hey'],
-//     ['tts', 'Tts'],
-//     ['hidden', 'Hidden'],
-//     ['other', 'Other']
-//   ])
-//   .registerDefaultCommands({
-//     ping: false,
-//     unknownCommand: false,
-//     commandState: false
-//   })
-//   .registerCommandsIn(`${__dirname}/commands`)
-
-client.login(config.token)
-  .then(console.log('Ready'))
-
-  client.on('error', console.error)
-
-const defaultText = 'shut up'
-let navySealCopyPasta
-axios.get('https://raw.githubusercontent.com/Patater/qso-generator/master/corpora/navy-seal-copypasta.txt')
-  .then(response => {
-    navySealCopyPasta = response.data
-  })
-
-client.on('messageCreate', async ({ channel, content, author }) => {
-  if (content.startsWith('!') && !author.bot) {
-    const randomNumber = Math.floor(Math.random() * 10)
-    const content = randomNumber === 0 ? navySealCopyPasta : defaultText
-    await channel.send({ content })
+async function loadBot() {
+  try {
+    await client.login(config.token)
+    client.logger.info('Ready')
+    client.on('error', console.error)
+  } catch (error) {
+    client.logger.fatal(error);
+    client.destroy()
+    process.exit(1)
   }
-})
+}
+
+loadBot()

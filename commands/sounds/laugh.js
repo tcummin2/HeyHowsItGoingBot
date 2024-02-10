@@ -1,16 +1,14 @@
-const fs = require('fs')
-const BaseSoundCommand = require('../../base_sound_command')
+import fs from 'fs'
+import BaseSoundCommand from '../../base_sound_command.js'
 
-class Laugh extends BaseSoundCommand {
-  constructor(client) {
-    super(client, {
+export default class Laugh extends BaseSoundCommand {
+  constructor(context, options) {
+    super(context, {
+      ...options,
       name: 'laugh',
-      group: 'sounds',
-      memberName: 'laugh',
+      category: 'sounds',
       description: 'Laugh track'
     })
     this.fileNames = fs.readdirSync('./sounds/laugh').map(fileName => `laugh/${fileName}`)
   }
 }
-
-module.exports = Laugh

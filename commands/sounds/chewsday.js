@@ -1,16 +1,14 @@
-const BaseSoundCommand = require('../../base_sound_command')
+import BaseSoundCommand from '../../base_sound_command.js'
 
-class Chewsday extends BaseSoundCommand {
-  constructor(client) {
-    super(client, {
+export default class Chewsday extends BaseSoundCommand {
+  constructor(context, options) {
+    super(context, {
+      ...options,
       name: 'chewsday',
-      group: 'sounds',
-      memberName: 'chewsday',
+      category: 'sounds',
       description: 'Chewsday, innit?',
       aliases: ['innit', 'chewsdayinnit']
     })
     this.fileNames = ['chewsday.mp3', 'chewsday-2.mp3']
   }
 }
-
-module.exports = Chewsday

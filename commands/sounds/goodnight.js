@@ -1,15 +1,13 @@
-const BaseSoundCommand = require('../../base_sound_command')
+import BaseSoundCommand from '../../base_sound_command.js'
 
-class Goodnight extends BaseSoundCommand {
-  constructor(client) {
-    super(client, {
+export default class Goodnight extends BaseSoundCommand {
+  constructor(context, options) {
+    super(context, {
+      ...options,
       name: 'goodnight',
-      group: 'sounds',
-      memberName: 'goodnight',
+      category: 'sounds',
       description: 'Goodnight girl, I\'ll see ya tomorrow'
     })
     this.fileNames = ['goodnight.mp3']
   }
 }
-
-module.exports = Goodnight

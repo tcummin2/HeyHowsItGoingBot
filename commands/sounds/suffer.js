@@ -1,16 +1,14 @@
-const BaseSoundCommand = require('../../base_sound_command')
+import BaseSoundCommand from '../../base_sound_command.js'
 
-class Suffer extends BaseSoundCommand {
-  constructor(client) {
-    super(client, {
+export default class Suffer extends BaseSoundCommand {
+  constructor(context, options) {
+    super(context, {
+      ...options,
       name: 'suffer',
-      group: 'sounds',
-      memberName: 'suffer',
+      category: 'sounds',
       description: 'Why are we still here? Just to suffer?',
       aliases: ['whyarewestillhere']
     })
     this.fileNames = ['suffer.mp3']
   }
 }
-
-module.exports = Suffer

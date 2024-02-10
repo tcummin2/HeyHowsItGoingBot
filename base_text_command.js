@@ -1,9 +1,11 @@
-const { Command } = require('discord.js-commando')
+import { Command } from '@sapphire/framework'
 
-class BaseTextCommand extends Command {
-  async run(message, args) {
-    message.channel.send(this.description)
+export default class BaseTextCommand extends Command {
+  // constructor(context, options) {
+  //   super(context, options)
+  // }
+
+  async messageRun(message) {
+    await message.channel.send(this.description)
   }
 }
-
-module.exports = BaseTextCommand

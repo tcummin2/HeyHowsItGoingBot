@@ -1,15 +1,13 @@
-const BaseSoundCommand = require('../../base_sound_command')
+import BaseSoundCommand from '../../base_sound_command.js'
 
-class Cyberpunk extends BaseSoundCommand {
-  constructor(client) {
-    super(client, {
+export default class Cyberpunk extends BaseSoundCommand {
+  constructor(context, options) {
+    super(context, {
+      ...options,
       name: 'cyberpunk',
-      group: 'sounds',
-      memberName: 'cyberpunk',
+      category: 'sounds',
       description: 'Keanu'
     })
     this.fileNames = ['cyberpunk.mp3']
   }
 }
-
-module.exports = Cyberpunk

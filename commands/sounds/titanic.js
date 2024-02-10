@@ -1,15 +1,13 @@
-const BaseSoundCommand = require('../../base_sound_command')
+import BaseSoundCommand from '../../base_sound_command.js'
 
-class Titanic extends BaseSoundCommand {
-  constructor(client) {
-    super(client, {
+export default class Titanic extends BaseSoundCommand {
+  constructor(context, options) {
+    super(context, {
+      ...options,
       name: 'titanic',
-      group: 'sounds',
-      memberName: 'titanic',
+      category: 'sounds',
       description: 'Gentlemen, it has been a privilege playing with you tonight'
     })
     this.fileNames = ['titanic.mp3', 'titanic-2.mp3', 'titanic-3.mp3', 'titanic-4.mp3', 'titanic-bass.mp3']
   }
 }
-
-module.exports = Titanic

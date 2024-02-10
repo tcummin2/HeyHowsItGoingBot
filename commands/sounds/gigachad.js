@@ -1,16 +1,14 @@
-const BaseSoundCommand = require('../../base_sound_command')
+import BaseSoundCommand from '../../base_sound_command.js'
 
-class Gigachad extends BaseSoundCommand {
-  constructor(client) {
-    super(client, {
+export default class Gigachad extends BaseSoundCommand {
+  constructor(context, options) {
+    super(context, {
+      ...options,
       name: 'gigachad',
-      group: 'sounds',
-      memberName: 'gigachad',
+      category: 'sounds',
       description: 'Yes.',
       aliases: ['chad', 'chadd']
     })
     this.fileNames = ['gigachad.mp3']
   }
 }
-
-module.exports = Gigachad

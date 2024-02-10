@@ -1,15 +1,13 @@
-const BaseSoundCommand = require('../../base_sound_command')
+import BaseSoundCommand from '../../base_sound_command.js'
 
-class DoubleKill extends BaseSoundCommand {
-  constructor(client) {
-    super(client, {
+export default class DoubleKill extends BaseSoundCommand {
+  constructor(context, options) {
+    super(context, {
+      ...options,
       name: 'doublekill',
-      group: 'sounds',
-      memberName: 'doublekill',
+      category: 'sounds',
       description: 'Double Kill'
     })
     this.fileNames = ['double-kill.mp3']
   }
 }
-
-module.exports = DoubleKill

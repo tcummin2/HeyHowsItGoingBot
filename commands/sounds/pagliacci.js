@@ -1,16 +1,14 @@
-const BaseSoundCommand = require('../../base_sound_command')
+import BaseSoundCommand from '../../base_sound_command.js'
 
-class Pagliacci extends BaseSoundCommand {
-  constructor(client) {
-    super(client, {
+export default class Pagliacci extends BaseSoundCommand {
+  constructor(context, options) {
+    super(context, {
+      ...options,
       name: 'pagliacci',
-      group: 'sounds',
-      memberName: 'pagliacci',
+      category: 'sounds',
       description: 'Italian Opera',
       aliases: ['opera']
     })
     this.fileNames = ['pagliacci.mp3']
   }
 }
-
-module.exports = Pagliacci

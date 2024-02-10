@@ -1,15 +1,13 @@
-const BaseImageCommand = require('../../base_image_command')
+import BaseImageCommand from '../../base_image_command.js'
 
-class Joey extends BaseImageCommand {
-  constructor(client) {
-    super(client, {
+export default class Joey extends BaseImageCommand {
+  constructor(context, options) {
+    super(context, {
+      ...options,
       name: 'joey',
-      group: 'image',
-      memberName: 'joey',
+      category: 'image',
       description: 'Joey M. Eatballs at your service'
     })
     this.fileNames = ['joey.png']
   }
 }
-
-module.exports = Joey

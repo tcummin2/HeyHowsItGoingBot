@@ -1,15 +1,13 @@
-const BaseSoundCommand = require('../../base_sound_command')
+import BaseSoundCommand from '../../base_sound_command.js'
 
-class Io extends BaseSoundCommand {
-  constructor(client) {
-    super(client, {
+export default class Io extends BaseSoundCommand {
+  constructor(context, options) {
+    super(context, {
+      ...options,
       name: 'io',
-      group: 'sounds',
-      memberName: 'io',
+      category: 'sounds',
       description: 'Io'
     })
     this.fileNames = ['io.mp3', 'io-2.mp3']
   }
 }
-
-module.exports = Io

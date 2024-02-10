@@ -1,15 +1,13 @@
-const BaseSoundCommand = require('../../base_sound_command')
+import BaseSoundCommand from '../../base_sound_command.js'
 
-class LetTeephSleep extends BaseSoundCommand {
-  constructor(client) {
-    super(client, {
+export default class LetTeephSleep extends BaseSoundCommand {
+  constructor(context, options) {
+    super(context, {
+      ...options,
       name: 'letteephsleep',
-      group: 'sounds',
-      memberName: 'letteephsleep',
+      category: 'sounds',
       description: 'Shhh baby sleeping'
     })
     this.fileNames = ['let-teeph-sleep.mp3']
   }
 }
-
-module.exports = LetTeephSleep

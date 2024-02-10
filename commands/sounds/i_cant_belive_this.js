@@ -1,16 +1,14 @@
-const BaseSoundCommand = require('../../base_sound_command')
+import BaseSoundCommand from '../../base_sound_command.js'
 
-class ICantBelieveThis extends BaseSoundCommand {
-  constructor(client) {
-    super(client, {
+export default class ICantBelieveThis extends BaseSoundCommand {
+  constructor(context, options) {
+    super(context, {
+      ...options,
       name: 'icantbelievethis',
-      group: 'sounds',
-      memberName: 'icantbelievethis',
+      category: 'sounds',
       description: 'I can\'t believe this',
       aliases: ['icantbelieve', 'cantbelieve', 'believe']
     })
     this.fileNames = ['i-cant-believe-this.mp3']
   }
 }
-
-module.exports = ICantBelieveThis

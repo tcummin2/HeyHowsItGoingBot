@@ -1,15 +1,13 @@
-const BaseSoundCommand = require('../../base_sound_command')
+import BaseSoundCommand from '../../base_sound_command.js'
 
-class Pizza extends BaseSoundCommand {
-  constructor(client) {
-    super(client, {
+export default class Pizza extends BaseSoundCommand {
+  constructor(context, options) {
+    super(context, {
+      ...options,
       name: 'pizza',
-      group: 'sounds',
-      memberName: 'pizza',
+      category: 'sounds',
       description: 'Pizza'
     })
     this.fileNames = ['pizza.mp3']
   }
 }
-
-module.exports = Pizza

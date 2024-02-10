@@ -1,11 +1,11 @@
-const BaseSoundCommand = require('../../base_sound_command')
+import BaseSoundCommand from '../../base_sound_command.js'
 
-class Sad extends BaseSoundCommand {
-  constructor(client) {
-    super(client, {
+export default class Sad extends BaseSoundCommand {
+  constructor(context, options) {
+    super(context, {
+      ...options,
       name: 'sad',
-      group: 'sounds',
-      memberName: 'sad',
+      category: 'sounds',
       description: 'OMG this is so sad, Alexa play Take On Me by Reel Big Fish',
       aliases: ['sadd', 'thisissosad', 'f']
     })
@@ -31,9 +31,9 @@ class Sad extends BaseSoundCommand {
       'on-the-nature-of-daylight.mp3',
       'up.mp3',
       'adagio-for-strings.mp3',
-      'coffin-dance.mp3'
+      'coffin-dance.mp3',
+      'game-over-oot.mp3',
+      'game-over-undertale.mp3'
     ]
   }
 }
-
-module.exports = Sad

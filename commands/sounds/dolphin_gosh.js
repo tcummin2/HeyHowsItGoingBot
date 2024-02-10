@@ -1,16 +1,14 @@
-const BaseSoundCommand = require('../../base_sound_command')
+import BaseSoundCommand from '../../base_sound_command.js'
 
-class DolphinGosh extends BaseSoundCommand {
-  constructor(client) {
-    super(client, {
+export default class DolphinGosh extends BaseSoundCommand {
+  constructor(context, options) {
+    super(context, {
+      ...options,
       name: 'dolphingosh',
-      group: 'sounds',
-      memberName: 'dolphingosh',
+      category: 'sounds',
       description: '*Dolphin noise from the heavens*',
       aliases: ['🐬gosh']
     })
     this.fileNames = ['dolphin-gosh.mp3']
   }
 }
-
-module.exports = DolphinGosh

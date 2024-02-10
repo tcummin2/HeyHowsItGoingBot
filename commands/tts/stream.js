@@ -1,24 +1,22 @@
-const BaseTtsCommand = require('../../base_tts_command')
-const WordPos = require('wordpos')
+import WordPos from 'wordpos'
+import BaseTtsCommand from '../../base_tts_command.js'
 
 const wordpos = new WordPos()
 
-class Stream extends BaseTtsCommand {
-  constructor(client) {
-    super(client, {
+export default class Stream extends BaseTtsCommand {
+  constructor(context, options) {
+    super(context, {
+      ...options,
       name: 'stream',
-      group: 'other',
-      memberName: 'stream',
-      description: 'Compliment the bot'
+      category: 'other',
+      description: 'Yo whose <noun> I gotta <verb> to get a stream around here?'
     })
   }
 
-  async run({ channel }) {
+  async messageRun({ channel }) {
     const [noun] = await wordpos.randNoun()
     const [verb] = await wordpos.randVerb()
     const str = `Yo whose ${noun.replace('_', ' ')} I gotta ${verb.replace('_', ' ')} to get a stream around here?`
-    channel.send(str, { tts: true })
+    await channel.send({ content: str, tts: true })
   }
 }
-
-module.exports = Stream

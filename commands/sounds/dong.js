@@ -1,16 +1,14 @@
-const BaseSoundCommand = require('../../base_sound_command')
+import BaseSoundCommand from '../../base_sound_command.js'
 
-class Dong extends BaseSoundCommand {
-  constructor(client) {
-    super(client, {
+export default class Dong extends BaseSoundCommand {
+  constructor(context, options) {
+    super(context, {
+      ...options,
       name: 'dong',
-      group: 'sounds',
-      memberName: 'dong',
+      category: 'sounds',
       description: '🍆',
       aliases: ['🍆']
     })
     this.fileNames = ['dong.mp3']
   }
 }
-
-module.exports = Dong

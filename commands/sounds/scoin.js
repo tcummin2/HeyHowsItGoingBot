@@ -1,16 +1,14 @@
-const BaseSoundCommand = require('../../base_sound_command')
+import BaseSoundCommand from '../../base_sound_command.js'
 
-class Scoin extends BaseSoundCommand {
-  constructor(client) {
-    super(client, {
+export default class Scoin extends BaseSoundCommand {
+  constructor(context, options) {
+    super(context, {
+      ...options,
       name: 'scoin',
-      group: 'sounds',
-      memberName: 'scoin',
+      category: 'sounds',
       description: '\'scoin on, boys?',
       aliases: ['scoin', 'sgoin']
     })
     this.fileNames = ['scoin.mp3']
   }
 }
-
-module.exports = Scoin

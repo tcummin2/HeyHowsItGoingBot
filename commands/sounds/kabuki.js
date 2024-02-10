@@ -1,16 +1,14 @@
-const BaseSoundCommand = require('../../base_sound_command')
+import BaseSoundCommand from '../../base_sound_command.js'
 
-class Kabuki extends BaseSoundCommand {
-  constructor(client) {
-    super(client, {
+export default class Kabuki extends BaseSoundCommand {
+  constructor(context, options) {
+    super(context, {
+      ...options,
       name: 'kabuki',
-      group: 'sounds',
-      memberName: 'kabuki',
+      category: 'sounds',
       description: 'YOOOOOOOOOOOOOOOOOOOO',
       aliases: ['not']
     })
     this.fileNames = ['kabuki.mp3', 'kabuki-2.mp3']
   }
 }
-
-module.exports = Kabuki

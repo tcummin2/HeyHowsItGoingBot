@@ -1,15 +1,13 @@
-const BaseSoundCommand = require('../../base_sound_command')
+import BaseSoundCommand from '../../base_sound_command.js'
 
-class SadEarrape extends BaseSoundCommand {
-  constructor(client) {
-    super(client, {
+export default class SadEarrape extends BaseSoundCommand {
+  constructor(context, options) {
+    super(context, {
+      ...options,
       name: 'sadearrape',
-      group: 'sounds',
-      memberName: 'sadearrape',
+      category: 'sounds',
       description: 'Sad voilin EARRAPE'
     })
     this.fileNames = ['sad-violin-earrape.mp3']
   }
 }
-
-module.exports = SadEarrape

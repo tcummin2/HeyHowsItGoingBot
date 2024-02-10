@@ -1,24 +1,22 @@
-const { Command } = require('discord.js-commando')
-const { onVoiceUpdate } = require('../../utils')
+import { Command } from '@sapphire/framework'
+import { onVoiceUpdate } from '../../utils.js'
 
-class AutoStop extends Command {
-  constructor(client) {
-    super(client, {
+export default class AutoStop extends Command {
+  constructor(context, options) {
+    super(context, {
+      ...options,
       name: 'autostop',
-      group: 'other',
-      memberName: 'autostop',
+      category: 'other',
       description: 'Stop any auto-commands in server'
     })
   }
 
-  async run({ client, guild, channel }) {
+  async messageRun({ client, guild, channel }) {
     if (!global.servers[guild.id]) global.servers[guild.id] = {}
 
     Object.assign(global.servers[guild.id], { auto: null })
     client.off('voiceStateUpdate', onVoiceUpdate)
 
-    channel.send('Stopped watching for auto-joins')
+    await channel.send('Stopped watching for auto-joins')
   }
 }
-
-module.exports = AutoStop

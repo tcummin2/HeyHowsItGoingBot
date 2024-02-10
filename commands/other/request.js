@@ -1,23 +1,22 @@
-const { Command } = require('discord.js-commando')
-const config = require('../../config.json')
+import { Command } from '@sapphire/framework'
+import config from '../../config.json' with { type: 'json' }
 
-class Request extends Command {
-  constructor(client) {
-    super(client, {
+export default class Request extends Command {
+  constructor(context, options) {
+    super(context, {
+      ...options,
       name: 'request',
-      group: 'other',
-      memberName: 'request',
+      category: 'other',
       description: 'Request a feature for the bot'
     })
   }
 
-  async run({ member, channel, client }, args) {
-    client.users.fetch(config.ownerId).then(user => {
-      user.send(`Request from ${member.user.username}: ${args}`)
-    })
-
-    channel.send('Your feature request has been sent to the bot owner.')
+  async messageRun({ member, channel, client }, args) {
+    const user = await client.users.fetch(config.ownerId)
+    const text = await args.rest('string')
+    await Promise.all([
+      user.send(`Request from ${member.user.username}: ${text}`),
+      channel.send('Your feature request has been sent to the bot owner.')
+    ])
   }
 }
-
-module.exports = Request

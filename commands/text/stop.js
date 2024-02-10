@@ -1,20 +1,22 @@
-const { Command } = require('discord.js-commando')
+import { Command } from '@sapphire/framework'
+import { getVoiceConnection } from '@discordjs/voice'
 
-class Stop extends Command {
-  constructor(client) {
-    super(client, {
-      name: 'heystop',
-      group: 'text',
-      memberName: 'heystop',
+export default class Stop extends Command {
+  constructor(context, options) {
+    super(context, {
+      ...options,
+      name: 'stop',
+      category: 'text',
       description: 'Stop the music'
     })
   }
 
-  async run(message, args) {
-    var server = servers[message.guild.id]
-    server.isPlaying = false
-    server.dispatcher.end()
+  async messageRun({ guild }) {
+    const connection = getVoiceConnection(guild.id)
+    if (connection) {
+      connection.destroy()
+      const server = global.servers[guild.id]
+      server.isPlaying = false
+    }
   }
 }
-
-module.exports = Stop

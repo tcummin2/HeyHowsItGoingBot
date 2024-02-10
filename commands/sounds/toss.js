@@ -1,16 +1,14 @@
-const BaseSoundCommand = require('../../base_sound_command')
+import BaseSoundCommand from '../../base_sound_command.js'
 
-class Toss extends BaseSoundCommand {
-  constructor(client) {
-    super(client, {
+export default class Toss extends BaseSoundCommand {
+  constructor(context, options) {
+    super(context, {
+      ...options,
       name: 'toss',
-      group: 'sounds',
-      memberName: 'toss',
+      category: 'sounds',
       description: 'I CANNOT JUMP THE DISTANCE YOU\'LL HAVE TO TOSS ME',
       aliases: ['tossme']
     })
     this.fileNames = ['toss.mp3']
   }
 }
-
-module.exports = Toss

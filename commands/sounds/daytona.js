@@ -1,15 +1,13 @@
-const BaseSoundCommand = require('../../base_sound_command')
+import BaseSoundCommand from '../../base_sound_command.js'
 
-class Daytona extends BaseSoundCommand {
-  constructor(client) {
-    super(client, {
+export default class Daytona extends BaseSoundCommand {
+  constructor(context, options) {
+    super(context, {
+      ...options,
       name: 'daytona',
-      group: 'sounds',
-      memberName: 'daytona',
+      category: 'sounds',
       description: 'DAYTONAAAAAAAA'
     })
     this.fileNames = ['daytona.mp3', 'daytona-2.mp3']
   }
 }
-
-module.exports = Daytona

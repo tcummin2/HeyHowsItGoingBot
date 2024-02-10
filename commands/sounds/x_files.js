@@ -1,15 +1,13 @@
-const BaseSoundCommand = require('../../base_sound_command')
+import BaseSoundCommand from '../../base_sound_command.js'
 
-class XFiles extends BaseSoundCommand {
-  constructor(client) {
-    super(client, {
+export default class XFiles extends BaseSoundCommand {
+  constructor(context, options) {
+    super(context, {
+      ...options,
       name: 'xfiles',
-      group: 'sounds',
-      memberName: 'xfiles',
+      category: 'sounds',
       description: 'Illuminati confirmed'
     })
     this.fileNames = ['x-files.mp3']
   }
 }
-
-module.exports = XFiles

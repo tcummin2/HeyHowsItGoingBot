@@ -1,14 +1,12 @@
-const BaseTtsCommand = require('../../base_tts_command')
+import BaseTtsCommand from '../../base_tts_command.js'
 
-class HeyTts extends BaseTtsCommand {
-  constructor(client) {
-    super(client, {
+export default class HeyTts extends BaseTtsCommand {
+  constructor(context, options) {
+    super(context, {
+      ...options,
       name: 'heytts',
-      group: 'tts',
-      memberName: 'heytts',
+      category: 'tts',
       description: 'Hey how\'s it going'
     })
   }
 }
-
-module.exports = HeyTts

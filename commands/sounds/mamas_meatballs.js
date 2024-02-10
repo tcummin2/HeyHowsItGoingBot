@@ -1,15 +1,13 @@
-const BaseSoundCommand = require('../../base_sound_command')
+import BaseSoundCommand from '../../base_sound_command.js'
 
-class MamasMeatballs extends BaseSoundCommand {
-  constructor(client) {
-    super(client, {
+export default class MamasMeatballs extends BaseSoundCommand {
+  constructor(context, options) {
+    super(context, {
+      ...options,
       name: 'meatballs',
-      group: 'sounds',
-      memberName: 'meatballs',
+      category: 'sounds',
       description: 'Nothin\' beats mama\'s meatballs'
     })
     this.fileNames = ['mamas-meatballs.mp3', 'mamas-meatballs-2.mp3', 'nothin-better.mp3']
   }
 }
-
-module.exports = MamasMeatballs

@@ -1,15 +1,13 @@
-const BaseSoundCommand = require('../../base_sound_command')
+import BaseSoundCommand from '../../base_sound_command.js'
 
-class MamboBomb extends BaseSoundCommand {
-  constructor(client) {
-    super(client, {
+export default class MamboBomb extends BaseSoundCommand {
+  constructor(context, options) {
+    super(context, {
+      ...options,
       name: 'mambobomb',
-      group: 'sounds',
-      memberName: 'mambobomb',
+      category: 'sounds',
       description: 'Ladies and gentlemen...'
     })
     this.fileNames = ['mambo-bomb.mp3']
   }
 }
-
-module.exports = MamboBomb

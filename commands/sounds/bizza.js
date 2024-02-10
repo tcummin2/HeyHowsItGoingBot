@@ -1,16 +1,14 @@
-const BaseSoundCommand = require('../../base_sound_command')
+import BaseSoundCommand from '../../base_sound_command.js'
 
-class Bizza extends BaseSoundCommand {
-  constructor(client) {
-    super(client, {
+export default class Bizza extends BaseSoundCommand {
+  constructor(context, options) {
+    super(context, {
+      ...options,
       name: 'bizza',
-      group: 'sounds',
-      memberName: 'bizza',
+      category: 'sounds',
       description: 'Bizza',
       aliases: ['🅱️izza']
     })
     this.fileNames = ['bizza.mp3']
   }
 }
-
-module.exports = Bizza

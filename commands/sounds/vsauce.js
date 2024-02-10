@@ -1,15 +1,13 @@
-const BaseSoundCommand = require('../../base_sound_command')
+import BaseSoundCommand from '../../base_sound_command.js'
 
-class VSauce extends BaseSoundCommand {
-  constructor(client) {
-    super(client, {
+export default class VSauce extends BaseSoundCommand {
+  constructor(context, options) {
+    super(context, {
+      ...options,
       name: 'vsauce',
-      group: 'sounds',
-      memberName: 'vsauce',
+      category: 'sounds',
       description: 'Hey, VSauce! Michael Here'
     })
     this.fileNames = ['vsauce.mp3']
   }
 }
-
-module.exports = VSauce

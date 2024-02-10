@@ -1,15 +1,18 @@
-const { Command } = require('discord.js-commando')
+import { Command } from '@sapphire/framework'
+import path from 'path'
 
-class BaseImageCommand extends Command {
-  async run(message, args) {
-    var index = !isNaN(args) && args >= 1
-      ? Math.floor(Math.floor((args - 1) % this.fileNames.length))
+export default class BaseImageCommand extends Command {
+  async messageRun(message, args) {
+    const indexArg = await args.pick('number').catch(() => -1)
+    const index = indexArg >= 1
+      ? Math.floor(Math.floor((indexArg - 1) % this.fileNames.length))
       : Math.floor(Math.random() * this.fileNames.length)
 
-    var fileName = this.fileNames[index]
-    var filePath = `${__dirname}/img/${fileName}`
+    const fileName = this.fileNames[index]
+    const filePath = path.join(__dirname, 'img', fileName)
 
-    message.channel.send(this.hideText ? '' : this.description, {
+    await message.channel.send({
+      content: this.hideText ? '' : this.description,
       files: [{
         attachment: filePath,
         name: fileName
@@ -17,5 +20,3 @@ class BaseImageCommand extends Command {
     })
   }
 }
-
-module.exports = BaseImageCommand

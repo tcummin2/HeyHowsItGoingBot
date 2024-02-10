@@ -1,16 +1,14 @@
-const BaseSoundCommand = require('../../base_sound_command')
+import BaseSoundCommand from '../../base_sound_command.js'
 
-class Woo extends BaseSoundCommand {
-  constructor(client) {
-    super(client, {
+export default class Woo extends BaseSoundCommand {
+  constructor(context, options) {
+    super(context, {
+      ...options,
       name: 'woo',
-      group: 'sounds',
-      memberName: 'woo',
+      category: 'sounds',
       description: 'WOO YEAH BAYBEEEE',
       aliases: ['charlie', 'cr1tikal']
     })
     this.fileNames = ['woo.mp3', 'woo-2.mp3']
   }
 }
-
-module.exports = Woo

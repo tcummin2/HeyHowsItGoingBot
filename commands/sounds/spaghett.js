@@ -1,15 +1,13 @@
-const BaseSoundCommand = require('../../base_sound_command')
+import BaseSoundCommand from '../../base_sound_command.js'
 
-class Spaghett extends BaseSoundCommand {
-  constructor(client) {
-    super(client, {
+export default class Spaghett extends BaseSoundCommand {
+  constructor(context, options) {
+    super(context, {
+      ...options,
       name: 'spaghett',
-      group: 'sounds',
-      memberName: 'spaghett',
+      category: 'sounds',
       description: 'Somebody touch\'a my buttered noodles and ketchup'
     })
     this.fileNames = ['spaghett.mp3']
   }
 }
-
-module.exports = Spaghett

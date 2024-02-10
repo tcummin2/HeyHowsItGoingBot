@@ -1,19 +1,20 @@
-const { Command } = require('discord.js-commando')
-const { default: getInsult } = require('insults')
+import { Command } from '@sapphire/framework'
+import insults from 'insults'
 
-class GoodBot extends Command {
-  constructor(client) {
-    super(client, {
+// No idea why this is necessary
+const { default: getInsult } = insults
+
+export default class GoodBot extends Command {
+  constructor(context, options) {
+    super(context, {
+      ...options,
       name: 'goodbot',
-      group: 'other',
-      memberName: 'goodbot',
+      category: 'other',
       description: 'Compliment the bot'
     })
   }
 
-  async run({ channel }) {
-    channel.send(getInsult())
+  async messageRun({ channel }) {
+    await channel.send(getInsult())
   }
 }
-
-module.exports = GoodBot

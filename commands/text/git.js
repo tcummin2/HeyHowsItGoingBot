@@ -1,14 +1,14 @@
-const BaseTextCommand = require('../../base_text_command')
+import BaseTextCommand from '../../base_text_command.js'
 
-class Git extends BaseTextCommand {
-  constructor(client) {
-    super(client, {
+const GITHUB_URL = 'https://github.com/tcummin2/HeyHowsItGoingBot'
+
+export default class Git extends BaseTextCommand {
+  constructor(context, options) {
+    super(context, {
+      ...options,
       name: 'git',
-      group: 'text',
-      memberName: 'git',
-      description: 'git gud baddie https://github.com/tcummin2/HeyHowsItGoingBot'
+      category: 'text',
+      description: `git gud baddie ${GITHUB_URL}`
     })
   }
 }
-
-module.exports = Git

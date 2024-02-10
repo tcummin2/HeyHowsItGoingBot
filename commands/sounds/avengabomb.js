@@ -1,15 +1,13 @@
-const BaseSoundCommand = require('../../base_sound_command')
+import BaseSoundCommand from '../../base_sound_command.js'
 
-class Avengabomb extends BaseSoundCommand {
-  constructor(client) {
-    super(client, {
+export default class Avengabomb extends BaseSoundCommand {
+  constructor(context, options) {
+    super(context, {
+      ...options,
       name: 'avengabomb',
-      group: 'sounds',
-      memberName: 'avengabomb',
+      category: 'sounds',
       description: 'Mom come pick me up I\'m scared'
     })
     this.fileNames = ['avengabomb.mp3']
   }
 }
-
-module.exports = Avengabomb

@@ -1,14 +1,12 @@
-const BaseTextCommand = require('../../base_text_command')
+import BaseTextCommand from '../../base_text_command.js'
 
-class HeyText extends BaseTextCommand {
-  constructor(client) {
-    super(client, {
+export default class HeyText extends BaseTextCommand {
+  constructor(context, options) {
+    super(context, {
+      ...options,
       name: 'heytext',
-      group: 'text',
-      memberName: 'heytext',
+      category: 'text',
       description: 'Hey how\'s it going'
     })
   }
 }
-
-module.exports = HeyText

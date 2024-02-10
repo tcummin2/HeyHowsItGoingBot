@@ -1,15 +1,13 @@
-const BaseSoundCommand = require('../../base_sound_command')
+import BaseSoundCommand from '../../base_sound_command.js'
 
-class CrazyFrog extends BaseSoundCommand {
-  constructor(client) {
-    super(client, {
+export default class CrazyFrog extends BaseSoundCommand {
+  constructor(context, options) {
+    super(context, {
+      ...options,
       name: 'crazyfrog',
-      group: 'sounds',
-      memberName: 'crazyfrog',
+      category: 'sounds',
       description: 'BRING DING DING DING DING DING'
     })
     this.fileNames = ['crazy-frog.mp3', 'crazy-frog-2.mp3']
   }
 }
-
-module.exports = CrazyFrog

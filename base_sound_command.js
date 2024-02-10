@@ -1,38 +1,57 @@
-const { Command } = require('discord.js-commando')
+import { Command } from '@sapphire/framework'
+import {
+  joinVoiceChannel,
+  createAudioPlayer,
+  createAudioResource,
+  AudioPlayerStatus,
+  getVoiceConnection
+} from '@discordjs/voice'
 
-class BaseSoundCommand extends Command {
+export default class BaseSoundCommand extends Command {
   constructor(client, args) {
     super(client, args)
     this.isAutomatable = true
   }
 
-  play(connection, message, args) {
-    const index = !this.ignoreArguments && !isNaN(args) && args >= 1
-      ? Math.floor(Math.floor((args - 1) % this.fileNames.length))
+  async play(connection, message, args) {
+    const argumentIndex = await args.pick('number').catch(() => -1)
+    const index = !this.ignoreArguments && argumentIndex >= 1
+      ? Math.floor(Math.floor((argumentIndex - 1) % this.fileNames.length))
       : Math.floor(Math.random() * this.fileNames.length)
 
     const fileName = this.fileNames[index]
-    const filePath = `${__dirname}/sounds/${fileName}`
+    const filePath = `sounds/${fileName}`
 
-    let server = servers[message.guild.id]
+    const server = global.servers[message.guild.id]
     server.isPlaying = true
-    server.dispatcher = connection.play(filePath)
 
-    server.dispatcher.on('finish', () => {
+    const resource = createAudioResource(filePath)
+    const player = createAudioPlayer()
+    player.on(AudioPlayerStatus.Idle, () => {
       server.isPlaying = false
-      setTimeout(() => connection.disconnect(), 1000)
+      connection.destroy()
     })
+    connection.subscribe(player)
+
+    player.play(resource)
   }
 
-  async run(message, args) {
+  async messageRun(message, args) {
     const { member, guild } = message
-    if (member.voice.channel && !guild.voiceConnection) {
-      if (!servers[guild.id]) servers[guild.id] = {}
+    if (member.voice.channel && !getVoiceConnection(guild.id)) {
+      if (!global.servers[guild.id]) {
+        global.servers[guild.id] = {}
+      }
 
-      const connection = await member.voice.channel.join()
-      this.play(connection, message, args)
+      const connection = joinVoiceChannel({
+        channelId: member.voice.channel.id,
+        guildId: member.voice.guild.id,
+        adapterCreator: member.voice.guild.voiceAdapterCreator,
+        selfDeaf: false,
+        setMute: false
+      })
+
+      await this.play(connection, message, args)
     }
   }
 }
-
-module.exports = BaseSoundCommand

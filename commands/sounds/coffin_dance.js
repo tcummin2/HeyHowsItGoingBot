@@ -1,16 +1,14 @@
-const BaseSoundCommand = require('../../base_sound_command')
+import BaseSoundCommand from '../../base_sound_command.js'
 
-class CoffinDance extends BaseSoundCommand {
-  constructor(client) {
-    super(client, {
+export default class CoffinDance extends BaseSoundCommand {
+  constructor(context, options) {
+    super(context, {
+      ...options,
       name: 'coffindance',
-      group: 'sounds',
-      memberName: 'coffindance',
+      category: 'sounds',
       description: 'Coffin dance',
       aliases: ['coffin']
     })
     this.fileNames = ['coffin-dance.mp3']
   }
 }
-
-module.exports = CoffinDance

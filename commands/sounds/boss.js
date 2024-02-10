@@ -1,11 +1,11 @@
-const BaseSoundCommand = require('../../base_sound_command')
+import BaseSoundCommand from '../../base_sound_command.js'
 
-class Boss extends BaseSoundCommand {
-  constructor(client) {
-    super(client, {
+export default class Boss extends BaseSoundCommand {
+  constructor(context, options) {
+    super(context, {
+      ...options,
       name: 'boss',
-      group: 'sounds',
-      memberName: 'boss',
+      category: 'sounds',
       description: 'Why do I hear boss music',
       aliases: ['bossfight', 'bossmusic']
     })
@@ -30,5 +30,3 @@ class Boss extends BaseSoundCommand {
     ]
   }
 }
-
-module.exports = Boss

@@ -1,15 +1,13 @@
-const BaseSoundCommand = require('../../base_sound_command')
+import BaseSoundCommand from '../../base_sound_command.js'
 
-class Slider extends BaseSoundCommand {
-  constructor(client) {
-    super(client, {
+export default class Slider extends BaseSoundCommand {
+  constructor(context, options) {
+    super(context, {
+      ...options,
       name: 'slider',
-      group: 'sounds',
-      memberName: 'slider',
+      category: 'sounds',
       description: 'Yahoo!'
     })
     this.fileNames = ['sm64-slider.mp3']
   }
 }
-
-module.exports = Slider

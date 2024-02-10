@@ -1,15 +1,13 @@
-const BaseSoundCommand = require('../../base_sound_command')
+import BaseSoundCommand from '../../base_sound_command.js'
 
-class Assemble extends BaseSoundCommand {
-  constructor(client) {
-    super(client, {
+export default class Assemble extends BaseSoundCommand {
+  constructor(context, options) {
+    super(context, {
+      ...options,
       name: 'assemble',
-      group: 'sounds',
-      memberName: 'assemble',
+      category: 'sounds',
       description: 'BUMMMMMM, BUM BUM BUM BUMMMMMMMMMM BUMMM BUMMM BUMMMMMM'
     })
     this.fileNames = ['assemble.mp3']
   }
 }
-
-module.exports = Assemble

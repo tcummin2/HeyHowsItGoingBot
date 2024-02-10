@@ -1,16 +1,14 @@
-const BaseSoundCommand = require('../../base_sound_command')
+import BaseSoundCommand from '../../base_sound_command.js'
 
-class CrabRave extends BaseSoundCommand {
-  constructor(client) {
-    super(client, {
+export default class CrabRave extends BaseSoundCommand {
+  constructor(context, options) {
+    super(context, {
+      ...options,
       name: 'crabrave',
-      group: 'sounds',
-      memberName: 'crabrave',
+      category: 'sounds',
       description: '🦀 BABY YODA IS GONE 🦀',
       aliases: ['crab', '🦀']
     })
     this.fileNames = ['crab-rave.mp3']
   }
 }
-
-module.exports = CrabRave
