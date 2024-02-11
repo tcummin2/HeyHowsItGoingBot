@@ -21,7 +21,8 @@
     "libsodium-wrappers": "^0.7.13",
     "opusscript": "^0.1.1",
     "uuid": "^9.0.1",
-    "wordpos": "^2.1.0"
+    "wordpos": "^2.1.0",
+    "yargs": "^17.7.2"
   },
   "devDependencies": {
     "eslint": "^8.56.0",

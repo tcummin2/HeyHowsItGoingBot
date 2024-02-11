@@ -9,7 +9,7 @@ export default class BaseImageCommand extends Command {
       : Math.floor(Math.random() * this.fileNames.length)
 
     const fileName = this.fileNames[index]
-    const filePath = path.join(__dirname, 'img', fileName)
+    const filePath = path.resolve('img', fileName)
 
     await message.channel.send({
       content: this.hideText ? '' : this.description,
