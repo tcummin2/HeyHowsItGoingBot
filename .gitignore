@@ -3,6 +3,7 @@ node_modules/
 
 yarn-error.log
 config.json
+.env
 
 sounds/hidden
 commands/hidden

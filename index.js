@@ -1,10 +1,7 @@
 import path from 'path'
 import { GatewayIntentBits, Events } from 'discord.js'
 import { SapphireClient } from '@sapphire/framework'
-import yargs from 'yargs'
-import config from './config.json' with { type: 'json' }
-
-const { argv } = yargs(process.argv)
+import redisClient from './redis.js'
 
 global.servers = {}
 
@@ -28,12 +25,13 @@ const client = new SapphireClient({
 
 async function loadBot() {
   try {
-    await client.login(config.token)
+    await client.login(process.env.TOKEN)
     client.logger.info('Ready')
     client.on(Events.Error, console.error)
 
     client.on(Events.ClientReady, async () => {
-      if (argv.wake) {
+      if ((await redisClient.get('wakeMessage'))?.toLowerCase() !== 'true') {
+        console.info('Sending wake message...')
         await Promise.all(client.guilds.cache.map(async guild => {
           const generalChannel = guild.channels.cache.find(channel => channel.name.includes('general'))
           await generalChannel?.send({
@@ -43,10 +41,14 @@ async function loadBot() {
             }]
           })
         }))
+
+        await redisClient.set('wakeMessage', 'true')
+      } else {
+        console.info('No wake message necessary.')
       }
     })
   } catch (error) {
-    client.logger.fatal(error);
+    client.logger.fatal(error)
     client.destroy()
     process.exit(1)
   }

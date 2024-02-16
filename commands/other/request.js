@@ -1,5 +1,4 @@
 import { Command } from '@sapphire/framework'
-import config from '../../config.json' with { type: 'json' }
 
 export default class Request extends Command {
   constructor(context, options) {
@@ -12,7 +11,7 @@ export default class Request extends Command {
   }
 
   async messageRun({ member, channel, client }, args) {
-    const user = await client.users.fetch(config.ownerId)
+    const user = await client.users.fetch(process.env.OWNER_ID)
     const text = await args.rest('string')
     await Promise.all([
       user.send(`Request from ${member.user.username}: ${text}`),
