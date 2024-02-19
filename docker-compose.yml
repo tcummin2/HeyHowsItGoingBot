@@ -2,7 +2,7 @@ version: '3.4'
 
 services:
   heyhowsitgoingbot:
-    image: heyhowsitgoingbot:latest
+    image: tcummin2/heyhowsitgoingbot:latest
     build:
       context: .
       dockerfile: ./Dockerfile

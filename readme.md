@@ -1,27 +1,23 @@
 # HeyHowsItGoingBot
-A Discord bot that asks you, "Hey, how's it going?"
+
+A meme Discord bot that plays several voice clips and performs other general meme-ery.
+
+## Prerequisites
+
+- Docker
+- Docker Compose
 
 ## Setup
-You will need to add a file named `config.json` to the root directory with the following structure, where `token` is the bot's token, `botId` is the Client ID, and `ownerId` is the ID of the owner.
+
+Clone the repo.
+
+You will need to add a `.env` file containing the following parameters:
 ```
-{
-  "token": "...",
-  "ownerId": "...",
-  "botId": "..."
-}
+TOKEN=YOUR_TOKEN
+OWNER_ID=YOUR_USER_ID
 ```
 
-### Add Bot to server
-Replace `[clientId]` in this url with your Client ID (same as above), which is found in in the Discord developer portal.
+Modify the sample `docker-compose.yml` as needed.
 
-https://discordapp.com/oauth2/authorize?client_id=[clientId]&scope=bot&permissions=1
-
-### Install Dependencies
-```
-npm install
-```
-## Usage
-```
-cd [root directory]
-node .
-```
+## Run Bot
+`docker compose up`
