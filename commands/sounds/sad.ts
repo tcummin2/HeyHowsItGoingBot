@@ -34,7 +34,8 @@ export default class Sad extends BaseSoundCommand {
       'adagio-for-strings.mp3',
       'coffin-dance.mp3',
       'game-over-oot.mp3',
-      'game-over-undertale.mp3'
+      'game-over-undertale.mp3',
+      'curb.mp3'
     ]
   }
 }
